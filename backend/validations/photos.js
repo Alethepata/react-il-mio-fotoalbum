@@ -1,3 +1,6 @@
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
+
 module.exports = {
     title: {
         in: ["body"],
@@ -34,16 +37,16 @@ module.exports = {
         }
     },
     image: {
-        in: ["file"],
-        notEmpty: {
-            errorMessage: "Inserire l'immagine",
-            bail: true,
-        },
-        isString: {
-            errorMessage: "Deve essere una stringa",
-            bail: true,
-        },
-        trim: true
+        in: ["body"],
+        trim: true,
+        custom: {
+            options: (_, {req}) => {
+                if (! req.file) {
+                    throw new Error('Inserire la foto')
+                };
+                return true
+            }
+        }
     },
     isVisible: {
         in: ["body"],
@@ -69,6 +72,23 @@ module.exports = {
         },
         customSanitizer: {
             options: (ids) => ids.map(id => ({id: parseInt(id)}))
+        },
+        custom: {
+            options: async (value) => {
+                const ids = value.map(id => id.id);
+                
+                const categories = await prisma.category.findMany({
+                    where: {
+                        id: {in:ids}
+                    }
+                })
+
+                if (value.length !== categories.length) {
+                    throw new Error('Una o più categorie inesistenti');
+                }
+
+                return true;
+            }
         }
     },
     
