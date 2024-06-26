@@ -1,0 +1,20 @@
+{
+  "name": "react-il-mio-fotoalbum-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemone app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.16.0",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "prisma": "^5.16.0"
+  }
+}
