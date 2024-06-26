@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemone app.js"
+    "dev": "nodemon app.js",
+    "migrate": "prisma migrate dev --name"
   },
   "author": "",
   "license": "ISC",
