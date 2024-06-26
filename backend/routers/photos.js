@@ -4,6 +4,9 @@ const router = express.Router();
 const multer = require("multer");
 const path = require("path");
 
+const validator = require("../middlewares/validator.js");
+const photosParam = require("../validations/photos.js")
+
 const {
     index,
     show,
@@ -27,9 +30,9 @@ router.get('/', index);
 
 router.get('/:id', show);
 
-router.post('/', upload.single("image"), create);
+router.post('/', [upload.single("image"), validator(photosParam)], create);
 
-router.put('/:id', upload.single("image"), update);
+router.put('/:id', [upload.single("image"), validator(photosParam)], update);
 
 router.delete('/:id', destroy);
 
