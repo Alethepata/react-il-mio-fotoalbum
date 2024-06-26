@@ -11,8 +11,28 @@ const index = (req, res) => {
     res.json('home')
 }
 
-const show = (req, res) => {
-    res.json('dettaglio foto')
+const show = async (req, res) => {
+    try {
+        const id = parseInt(req.params.id);
+
+        const photo = await prisma.photo.findUnique({
+            where: { id },
+            include: {
+                categories: {
+                    select: {
+                        id: true,
+                        name: true
+                    } 
+                        
+                }
+            }
+        })
+
+        res.json(photo)
+        
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 const create = async (req, res) => {
@@ -52,9 +72,11 @@ const update = (req, res) => {
 const destroy = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
+
         await prisma.photo.delete({
             where: { id },
         });
+
         res.json(`Foto con id ${id} eliminata con successo.`);
         
     } catch (error) {
