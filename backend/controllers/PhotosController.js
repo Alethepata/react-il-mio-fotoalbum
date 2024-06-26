@@ -49,8 +49,17 @@ const update = (req, res) => {
     res.json('modifica post foto')
 }
 
-const destroy = (req, res) => {
-    res.json('elimina foto')
+const destroy = async (req, res) => {
+    try {
+        const id = parseInt(req.params.id);
+        await prisma.photo.delete({
+            where: { id },
+        });
+        res.json(`Foto con id ${id} eliminata con successo.`);
+        
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 module.exports = {
