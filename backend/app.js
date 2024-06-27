@@ -8,11 +8,15 @@ const routerPhotos = require("./routers/photos.js")
 
 const routerCategories = require("./routers/categories.js")
 
+const routerMessages = require("./routers/messages.js")
+
 app.use(express.static('public'))
 
 app.use('/photos', routerPhotos);
 
 app.use('/categories', routerCategories);
+
+app.use('/messages', routerMessages);
 
 app.listen(port, () => {console.log('Server Online')});
 
