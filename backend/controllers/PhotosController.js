@@ -7,8 +7,38 @@ const port = PORT || 3000;
 
 const deletePhotos = require("../utils/deleteFile.js");
 
-const index = (req, res) => {
-    res.json('home')
+const index = async (req, res) => {
+
+    const where= Object.keys(req.query).reduce((aggregate, key) => {
+        if (key == 'isVisible') {
+            aggregate[key] = Boolean(req.query[key]);
+            return aggregate
+        } else {
+            aggregate[key] = {contains: (req.query[key])};
+            return aggregate;
+        }
+    }, {});
+    
+
+    try {
+        const photos = await prisma.photo.findMany({
+            where,
+            include: {
+                categories: {
+                    select: {
+                        id: true,
+                        name: true
+                    } 
+                        
+                }
+            }
+        });
+
+        res.json(photos);
+
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 const show = async (req, res) => {
