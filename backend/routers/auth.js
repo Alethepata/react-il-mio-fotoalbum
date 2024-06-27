@@ -4,13 +4,13 @@ const router = express.Router();
 const validator = require("../middlewares/validator.js");
 const usersParams = require("../validations/users.js");
 
-const { index, create } = require('../controllers/UsersController.js');
+const { register, login } = require('../controllers/AuthController.js');
 
 router.use(express.json());
 
-router.get('/', index);
+router.post('/register', register);
 
-router.post('/', validator(usersParams), create);
+router.post('/login', validator(usersParams), login);
 
 
 
