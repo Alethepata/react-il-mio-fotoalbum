@@ -20,9 +20,12 @@ const badRequest = require("./middlewares/badRequest.js");
 
 const serverError = require("./middlewares/serverError.js");
 
+const HomeController = require("./controllers/HomeController.js");
+
 
 app.use(express.static('public'))
 
+app.use('/home', HomeController)
 
 app.use('/categories', routerCategories);
 
