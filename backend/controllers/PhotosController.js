@@ -95,8 +95,42 @@ const create = async (req, res) => {
 
 }
 
-const update = (req, res) => {
-    res.json('modifica post foto')
+const update = async (req, res) => {
+    const { id } = req.params;
+
+    const { title, description, isVisible, categories } = req.body;
+
+    const image = `${HOST}:${port}/photos/${req.file.filename}`;
+
+    const data = {
+        title,
+        description,
+        image,
+        isVisible,
+        categories: {
+            set: categories
+        },
+    }
+
+    try {
+        const photo = await prisma.photo.update({
+            where: { id: parseInt(id) },
+            data,
+            include: {
+                categories: {
+                    select: {
+                        id: true,
+                        name: true
+                    } 
+                        
+                }
+            }
+        })
+        res.json(photo)
+    } catch (error) {
+        deletePhotos('photos', req.file.filename)
+        console.log(error);
+    }
 }
 
 const destroy = async (req, res) => {
