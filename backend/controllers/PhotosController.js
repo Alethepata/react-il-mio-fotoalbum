@@ -23,6 +23,11 @@ const index = async (req, res) => {
     try {
         const photos = await prisma.photo.findMany({
             where,
+            orderBy: [
+                {
+                    createdAt: 'desc'
+                }
+            ],
             include: {
                 categories: {
                     select: {
