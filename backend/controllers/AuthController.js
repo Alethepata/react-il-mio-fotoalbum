@@ -42,10 +42,16 @@ const login = async (req, res) => {
             where: {email}
         });
 
-        const isPasswordValid = await comparePassword(password, user.password);
+        const loginError = new Error(`Email o password errati.`, 400);
 
-        if(!user || !isPasswordValid){
-            throw new Error('Email o password errati.');
+        if(!user){
+            throw loginError;
+        }
+
+        const isPasswordValid = await comparePassword(password, user.password);
+        
+        if (!isPasswordValid) {
+            throw loginError;
         }
 
         const token = generateToken({
