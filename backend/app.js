@@ -10,6 +10,8 @@ const routerCategories = require("./routers/categories.js")
 
 const routerMessages = require("./routers/messages.js")
 
+const routerUsers = require("./routers/users.js")
+
 app.use(express.static('public'))
 
 app.use('/photos', routerPhotos);
@@ -17,6 +19,8 @@ app.use('/photos', routerPhotos);
 app.use('/categories', routerCategories);
 
 app.use('/messages', routerMessages);
+
+app.use('/users', routerUsers);
 
 app.listen(port, () => {console.log('Server Online')});
 
