@@ -7,7 +7,7 @@ const port = PORT || 3000;
 
 const deletePhotos = require("../utils/deleteFile.js");
 
-const index = async (req, res) => {
+const index = async (req, res, next) => {
 
     const where= Object.keys(req.query).reduce((aggregate, key) => {
         if (key == 'isVisible') {
@@ -42,11 +42,11 @@ const index = async (req, res) => {
         res.json(photos);
 
     } catch (error) {
-        console.log(error);
+        next(error);
     }
 }
 
-const show = async (req, res) => {
+const show = async (req, res, next) => {
     try {
         const id = parseInt(req.params.id);
 
@@ -66,11 +66,11 @@ const show = async (req, res) => {
         res.json(photo)
         
     } catch (error) {
-        console.log(error)
+        next(error);
     }
 }
 
-const create = async (req, res) => {
+const create = async (req, res, next) => {
 
     const { title, description, isVisible, categories } = req.body;
 
@@ -93,14 +93,13 @@ const create = async (req, res) => {
         res.status(200).json(photo)
         
     } catch (error) {
-        deletePhotos('photos', req.file.filename)
-        console.log(error);
+        next(error);
     }
 
 
 }
 
-const update = async (req, res) => {
+const update = async (req, res, next) => {
     const { id } = req.params;
 
     const { title, description, isVisible, categories } = req.body;
@@ -134,11 +133,11 @@ const update = async (req, res) => {
         res.json(photo)
     } catch (error) {
         deletePhotos('photos', req.file.filename)
-        console.log(error);
+        next(error);
     }
 }
 
-const destroy = async (req, res) => {
+const destroy = async (req, res, next) => {
     try {
         const id = parseInt(req.params.id);
 
@@ -149,7 +148,7 @@ const destroy = async (req, res) => {
         res.json(`Foto con id ${id} eliminata con successo.`);
         
     } catch (error) {
-        console.log(error);
+        next(error);
     }
 }
 

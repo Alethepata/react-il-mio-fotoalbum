@@ -1,7 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const index = async (req, res) => {
+const index = async (req, res, next) => {
     try {
         const messages = await prisma.message.findMany(
             {
@@ -16,11 +16,11 @@ const index = async (req, res) => {
         res.json({ messages })
         
     } catch (error) {
-        console.log(error)
+        next(error);
     }
 }
 
-const create = async (req, res) => {
+const create = async (req, res, next) => {
     const { email, message } = req.body;
 
     const data = {
@@ -34,7 +34,7 @@ const create = async (req, res) => {
         res.status(200).json(message)
         
     } catch (error) {
-        console.log(error);
+        next(error);
     }
 
 

@@ -3,7 +3,7 @@ const { hashPassword, comparePassword } = require("../utils/password");
 const generateToken = require("../utils/generateToken");
 const prisma = new PrismaClient();
 
-const register = async (req, res) => {
+const register = async (req, res, next) => {
     try {
         const { email, password, name } = req.body;
     
@@ -28,13 +28,13 @@ const register = async (req, res) => {
         res.status(200).json({token, data: user})
         
     } catch (error) {
-        console.log(error);
+        next(error);
     }
 
 
 }
 
-const login = async (req, res) => {
+const login = async (req, res, next) => {
     try {
         const { email, password } = req.body;
 
@@ -42,7 +42,7 @@ const login = async (req, res) => {
             where: {email}
         });
 
-        const loginError = new Error(`Email o password errati.`, 400);
+        const loginError = new Error(`Email o password errati.`);
 
         if(!user){
             throw loginError;
@@ -65,7 +65,7 @@ const login = async (req, res) => {
         res.json({ token, data: user });
         
     } catch (error) {
-        console.log(error);
+        next(error);
     }
 
 }
