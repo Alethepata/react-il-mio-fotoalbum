@@ -12,10 +12,7 @@ module.exports = {
     },
     name: {
         in: ["body"],
-        notEmpty: {
-            errorMessage: "Inserire il nome",
-            bail: true,
-        },
+        optional: true,
         isString: {
             errorMessage: "Deve essere una stringa",
             bail: true,
