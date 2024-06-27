@@ -3,7 +3,15 @@ const prisma = new PrismaClient();
 
 const index = async (req, res) => {
     try {
-        const messages = await prisma.message.findMany()
+        const messages = await prisma.message.findMany(
+            {
+                orderBy: [
+                    {
+                        createdAt: 'desc'
+                    }
+                ],
+            }
+        )
 
         res.json({ messages })
         
