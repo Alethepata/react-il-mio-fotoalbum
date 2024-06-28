@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
 
             setUser(data.data);
 
-            localStorage.setItem('accessToken', data.token);
+            localStorage.setItem('accessToken', data.data.token);
 
 
             navigate('/dashboard');
