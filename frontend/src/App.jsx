@@ -7,8 +7,10 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+
 import { AuthProvider } from "./contexts/AuthContext";
 import { PhotosProvider } from "./contexts/PhotosContext";
+import { MessagesProvider } from "./contexts/MessagesContext";
 
 function App() {
 
@@ -16,6 +18,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <PhotosProvider>
+          <MessagesProvider>
 
           <Routes>
     
@@ -36,6 +39,7 @@ function App() {
     
           </Routes>
 
+          </MessagesProvider>
         </PhotosProvider>
       </AuthProvider>
     </BrowserRouter>
