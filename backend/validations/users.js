@@ -26,7 +26,7 @@ module.exports = {
     password: {
         in: ["body"],
         notEmpty: {
-            errorMessage: 'Password è un campo obbligatorio.',
+            errorMessage: 'Inserire la password.',
             bail: true
         },
         isString: {
