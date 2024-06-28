@@ -3,7 +3,7 @@ import { useAuth } from "../contexts/AuthContext";
 
 function Header() {
   
-  const { logout, isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   return(
     <header>
@@ -14,7 +14,7 @@ function Header() {
                   
             {
               isLoggedIn &&
-              <li><button onClick={logout}>Log out</button></li>
+              <li><NavLink to="/dashboard/">Dashborad</NavLink></li>
             }
                   
             {
