@@ -15,9 +15,9 @@ const PhotosProvider = ({ children }) => {
 
         const categoriesData = await axios.get('/categories');
 
-        setPhotosHome(photosData.data);
+        setPhotosHome(photosData.data.photos);
 
-        setCategories(categoriesData.data);
+        setCategories(categoriesData.data.categories);
     }
 
     useEffect(() => {
