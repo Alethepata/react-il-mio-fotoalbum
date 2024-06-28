@@ -5,12 +5,15 @@ import PrivatePage from "./middlewares/PrivatePage";
 import DefaultLayout from "./layouts/DefaultLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
 import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard";
+import DashboardHome from "./pages/DashboardHome";
 import Login from "./pages/Login";
 
 import { AuthProvider } from "./contexts/AuthContext";
 import { PhotosProvider } from "./contexts/PhotosContext";
 import { MessagesProvider } from "./contexts/MessagesContext";
+import DashboardCreate from "./pages/DashboardCreate";
+import DashboardEdit from "./pages/DashboardEdit";
+import DashboardShow from "./pages/DashboardShow";
 
 function App() {
 
@@ -29,12 +32,15 @@ function App() {
             </Route>
     
             {/* Rotte Private */}
-            <Route path="/" element={
+            <Route path="/dashboard" element={
               <PrivatePage>
                 <DashboardLayout/>
               </PrivatePage>
             }>
-              <Route path="dashboard" element={<Dashboard/>} />
+              <Route index element={<DashboardHome/>} />
+              <Route path="create" element={<DashboardCreate/>} />
+              <Route path=":id" element={<DashboardShow/>} />
+              <Route path=":id/edit" element={<DashboardEdit/>} />
             </Route>
     
           </Routes>
