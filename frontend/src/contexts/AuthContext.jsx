@@ -10,7 +10,7 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useStorage(null, 'user');
 
-    const [isLoggedIn, setIsLoggedIn] = useStorage(false, 'logged');
+    const isLoggedIn = user !== null;
 
     
     const navigate = useNavigate();
@@ -23,7 +23,6 @@ const AuthProvider = ({ children }) => {
 
             localStorage.setItem('accessToken', data.token);
 
-            setIsLoggedIn(true);
 
             navigate('/dashboard');
 
@@ -41,7 +40,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const logout = () => { 
-        setIsLoggedIn(false);
+        setUser(null);
 
         localStorage.removeItem('accessToken');
 
