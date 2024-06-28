@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
+const cors = require("cors");
+
 const routerPhotos = require("./routers/photos.js")
 
 const routerCategories = require("./routers/categories.js")
@@ -22,6 +24,7 @@ const serverError = require("./middlewares/serverError.js");
 
 const HomeController = require("./controllers/HomeController.js");
 
+app.use(cors());
 
 app.use(express.static('public'))
 
