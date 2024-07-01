@@ -15,6 +15,8 @@ function Menu() {
                 
                 <li><NavLink to="photos/create">Crea</NavLink></li>
 
+                <li><NavLink to="categories">Categorie</NavLink></li>
+
                 <li><NavLink to="messages">Messaggi</NavLink></li>
                 
                 <li><button onClick={logout}>Log out</button></li>

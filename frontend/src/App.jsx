@@ -16,6 +16,8 @@ import DashboardEdit from "./pages/DashboardEdit";
 import DashboardShow from "./pages/DashboardShow";
 import Messages from "./pages/Messages";
 import MessagesDetails from "./pages/MessagesDetails";
+import Categories from "./pages/Categories";
+import AddCategory from "./pages/AddCategory";
 
 function App() {
 
@@ -45,6 +47,11 @@ function App() {
                   <Route path="create" element={<DashboardCreate />} />
                   <Route path=":id" element={<DashboardShow/>} />
                   <Route path=":id/edit" element={<DashboardEdit/>} />
+                </Route>
+
+                <Route path="categories">
+                  <Route index element={<Categories/>} />
+                  <Route path="create" element={<AddCategory/>}/>
                 </Route>
 
                 <Route path="messages">
