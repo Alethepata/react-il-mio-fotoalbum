@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Card({photo}) {
     return (
-        <Link to={`/dashboard/${photo.id}`}>
+        <Link to={`/dashboard/photos/${photo.id}`}>
 
             <div className="card_custom position-relative">
     

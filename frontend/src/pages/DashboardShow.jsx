@@ -50,7 +50,7 @@ function DashboardShow(){
       <div>
         <ul>
           <li>
-            <Link to={`/dashboard/${id}/edit`}>Modifica</Link>
+            <Link to={`/dashboard/photos/${id}/edit`}>Modifica</Link>
           </li>
           <li>
             <button onClick={deletePhoto}>Elimina</button>
