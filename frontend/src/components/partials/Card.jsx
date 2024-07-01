@@ -1,9 +1,5 @@
-import { Link } from "react-router-dom";
-
 function Card({photo}) {
     return (
-        <Link to={`/dashboard/photos/${photo.id}`}>
-
             <div className="card_custom position-relative">
     
                 <figure className="h-100 w-100">
@@ -15,8 +11,6 @@ function Card({photo}) {
                 </div>
     
             </div>
-
-        </Link>
     )
 }
 

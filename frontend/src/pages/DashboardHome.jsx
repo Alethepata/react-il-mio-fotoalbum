@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "../utils/axiosClient";
 import Card from "../components/partials/Card";
 import { usePhotos } from "../contexts/PhotosContext";
+import { Link } from "react-router-dom";
 
 
 function DashboardHome() {
@@ -26,7 +27,7 @@ function DashboardHome() {
             <div className="container-card d-flex flex-wrap justify-content-evenly gap-4">
 
             {
-                photos.map(photo => <Card key={`card_photo_dashboard_${photo.id}`} photo={photo} />)
+                photos.map(photo => <Link to={`/dashboard/photos/${photo.id}`} ><Card key={`card_photo_dashboard_${photo.id}`} photo={photo} /></Link>)
             }
 
             </div>
