@@ -10,6 +10,8 @@ const PhotosProvider = ({ children }) => {
 
     const [categories, setCategories] = useState([]);
 
+    const [search, setSearch] = useState('');
+
     const getApi = async () => {
         const photosData = await axios.get('/home');
 
@@ -20,13 +22,20 @@ const PhotosProvider = ({ children }) => {
         setCategories(categoriesData.data.categories);
     }
 
+    const searchTitle = (title) => {
+        setSearch(title)
+    }
+
+
     useEffect(() => {
         getApi();
     }, [])
 
     const value = {
         photosHome,
-        categories
+        categories,
+        searchTitle,
+        search
     }
 
     return (
