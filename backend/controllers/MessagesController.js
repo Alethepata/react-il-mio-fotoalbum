@@ -40,8 +40,24 @@ const create = async (req, res, next) => {
 
 }
 
+const show = async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+
+        const message = await prisma.message.findUnique({
+            where: { id }
+        })
+
+        res.json(message)
+        
+    } catch (error) {
+        next(error);
+    }
+}
+
 
 module.exports = {
     index,
-    create
+    create,
+    show
 }
