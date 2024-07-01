@@ -12,6 +12,8 @@ function DashboardEdit() {
 
     const { id } = useParams();
 
+    const navigate = useNavigate();
+
     
     const [dataToEdit, setDataToEdit] = useState({});
     
@@ -27,15 +29,16 @@ function DashboardEdit() {
     }
 
     useEffect(() => {
-        fetchDataToEdit();
+        fetchDataToEdit()
     },[id]);
     
 
     const addPhoto = async (url, data) => {
         try {
-            await axios.post(url, data, {
+            await axios.put(url, data, {
                 headers: { "Content-Type": "multipart/form-data" }
             });
+            navigate(`/dashboard/photos/${id}`);
         } catch (err) {
             const errors = err.response.data.errors;
             
@@ -65,7 +68,7 @@ function DashboardEdit() {
 
         try {
             await addPhoto(`/photos/${id}`, dataToEdit);
-
+            
         } catch (error) {
             setFormError(error);
         }
