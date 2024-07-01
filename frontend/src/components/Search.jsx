@@ -16,14 +16,18 @@ function Search() {
   }
 
   return (
-    <form onSubmit={handleSubmit} role="search">
-      <input
-        type="search"
-        placeholder="Cerca"
-        value={title}
-        onChange={event => addTitle(event.target.value)} />
-      <button>Search</button>
-    </form>
+    <div className="search">
+      <form onSubmit={handleSubmit} role="search">
+        <input
+          className="border"
+          type="search"
+          placeholder="Cerca"
+          value={title}
+          onChange={event => addTitle(event.target.value)} />
+        <button>Search</button>
+      </form>
+
+    </div>
   )
 }
   

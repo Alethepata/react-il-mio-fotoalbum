@@ -77,7 +77,7 @@ function DashboardEdit() {
 
 
     return (
-        <div className="container pt-3">
+        <div className="container form-style">
             <h1>Nuova Foto</h1>
             <form onSubmit={handleSubmit}>
 
@@ -109,7 +109,7 @@ function DashboardEdit() {
                     ></textarea>
                 </div>
 
-                <div className="check">
+                <div className="check margin d-flex flex-wrap gap-3">
                     {
                         categories.map(category => (
                             <div key={`form_category_${category.id}`}>
@@ -127,7 +127,7 @@ function DashboardEdit() {
                     }
                 </div>
 
-                <div className="margin">
+                <div className="is_visible">
                     <input
                         id="isVisible"isVisible
                         type="checkbox"
@@ -139,7 +139,7 @@ function DashboardEdit() {
                     </label>
                 </div>
 
-                <button>Invia</button>
+                <button className="margin">Invia</button>
             </form>
 
             {/* {formError !== null && <div className="error">{formError.message}</div>} */}

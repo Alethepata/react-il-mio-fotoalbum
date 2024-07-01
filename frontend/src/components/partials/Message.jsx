@@ -38,9 +38,9 @@ function Message() {
     }
 
     return (
-        <div className="container">
-            <h1>Message</h1>
-            <div className="form">
+        <div className="container my-5 form-style">
+            <h1 className="text-center">Message</h1>
+            <div className="form d-flex justify-content-center">
                 <form onSubmit={ handleSubmit }>
 
                     <div>
@@ -54,7 +54,7 @@ function Message() {
                         />
                     </div>
 
-                    <div>
+                    <div className="margin">
                         <label htmlFor="message">Messaggio</label>
                         <textarea
                             type="text"

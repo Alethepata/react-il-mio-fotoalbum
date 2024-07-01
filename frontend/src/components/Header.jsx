@@ -8,7 +8,7 @@ function Header() {
   return(
     <header>
       <nav>
-        <menu>
+        <menu className="d-flex gap-2">
                   
             <li><NavLink to="/">Home</NavLink></li>
                   

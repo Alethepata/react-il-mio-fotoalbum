@@ -22,7 +22,7 @@ function DashboardHome() {
     }, [search])
 
     return (
-        <div className="container pt-3">
+        <div className="container">
             <h1>Dashboard</h1>
             <div className="container-card d-flex flex-wrap justify-content-evenly gap-4">
 

@@ -38,7 +38,7 @@ function Login() {
     }
 
     return (
-        <div className="container">
+        <div className="container form-style">
             <h1>Login</h1>
             <div className="form">
                 <form onSubmit={ handleSubmit }>
@@ -54,7 +54,7 @@ function Login() {
                         />
                     </div>
 
-                    <div>
+                    <div className="margin">
                         <label htmlFor="password">Password</label>
                         <input
                             type="password"

@@ -8,7 +8,6 @@ function Home() {
 
     return (
         <div className="container">
-            <h1>Home</h1>
             <div className="container-card d-flex flex-wrap justify-content-evenly gap-4">
 
                 {

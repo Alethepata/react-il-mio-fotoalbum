@@ -62,7 +62,7 @@ function DashboardCreate() {
 
 
     return (
-        <div className="container pt-3">
+        <div className="container form-style">
             <h1>Nuova Foto</h1>
             <form onSubmit={handleSubmit}>
 
@@ -94,7 +94,7 @@ function DashboardCreate() {
                     ></textarea>
                 </div>
 
-                <div className="check">
+                <div className="check d-flex flex-wrap gap-3">
                     {
                         categories.map(category => (
                             <div key={`form_category_${category.id}`}>
@@ -112,7 +112,7 @@ function DashboardCreate() {
                     }
                 </div>
 
-                <div className="margin">
+                <div className="margin is_visible">
                     <input
                         id="isVisible"isVisible
                         type="checkbox"
