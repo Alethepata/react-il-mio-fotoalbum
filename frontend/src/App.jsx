@@ -14,6 +14,8 @@ import { MessagesProvider } from "./contexts/MessagesContext";
 import DashboardCreate from "./pages/DashboardCreate";
 import DashboardEdit from "./pages/DashboardEdit";
 import DashboardShow from "./pages/DashboardShow";
+import Messages from "./pages/Messages";
+import MessagesDetails from "./pages/MessagesDetails";
 
 function App() {
 
@@ -37,10 +39,19 @@ function App() {
                 <DashboardLayout/>
               </PrivatePage>
             }>
-              <Route index element={<DashboardHome/>} />
-              <Route path="create" element={<DashboardCreate/>} />
-              <Route path=":id" element={<DashboardShow/>} />
-              <Route path=":id/edit" element={<DashboardEdit/>} />
+                <Route index element={<DashboardHome />} />
+                
+                <Route path="photos">
+                  <Route path="create" element={<DashboardCreate />} />
+                  <Route path=":id" element={<DashboardShow/>} />
+                  <Route path=":id/edit" element={<DashboardEdit/>} />
+                </Route>
+
+                <Route path="messages">
+                  <Route index element={<Messages />} />
+                  <Route path=":id" element={<MessagesDetails />}/>
+                </Route>
+
             </Route>
     
           </Routes>

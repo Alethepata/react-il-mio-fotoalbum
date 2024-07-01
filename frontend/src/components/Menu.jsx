@@ -13,7 +13,9 @@ function Menu() {
             
                 <li><NavLink to="/dashboard">Home</NavLink></li>
                 
-                <li><NavLink to="create">Crea</NavLink></li>
+                <li><NavLink to="photos/create">Crea</NavLink></li>
+
+                <li><NavLink to="messages">Messaggi</NavLink></li>
                 
                 <li><button onClick={logout}>Log out</button></li>
                 

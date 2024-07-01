@@ -1,19 +1,10 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext } from "react";
 import axios from "../utils/axiosClient";
 
 const MessagesContext = createContext()
 
 
 const MessagesProvider = ({ children }) => {
-
-    const [messages, setMessages] = useState([]);
-
-    const getApi = async () => {
-        const messagesData = await axios.get('/messages');
-
-        setMessages(messagesData.data);
-
-    }
 
     const addMessage = async (data) => { 
         try {
@@ -31,12 +22,8 @@ const MessagesProvider = ({ children }) => {
         }
     }
 
-    useEffect(() => {
-        getApi();
-    }, [])
 
     const value = {
-        messages,
         addMessage
     }
 
