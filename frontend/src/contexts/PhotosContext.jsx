@@ -12,30 +12,37 @@ const PhotosProvider = ({ children }) => {
 
     const [search, setSearch] = useState('');
 
-    const getApi = async () => {
-        const photosData = await axios.get('/home');
+    const getPhotosHome = async () => {
+        const data = await axios.get('/home');
+        setPhotosHome(data.data.photos);
 
-        const categoriesData = await axios.get('/categories');
+    }
 
-        setPhotosHome(photosData.data.photos);
-
-        setCategories(categoriesData.data.categories);
+    const getCategories = async () => {
+        const data = await axios.get('/categories');
+        setCategories(data.data.categories);
     }
 
     const searchTitle = (title) => {
         setSearch(title)
     }
 
-
+    const onChange = () => {
+        getCategories();
+    }
+    
+    
     useEffect(() => {
-        getApi();
+        getPhotosHome();
+        getCategories();
     }, [])
 
     const value = {
         photosHome,
         categories,
         searchTitle,
-        search
+        search,
+        onChange
     }
 
     return (
