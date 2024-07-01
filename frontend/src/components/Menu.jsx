@@ -1,25 +1,31 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
+
+
+import { MdDashboard } from "react-icons/md";
+import { TbWorld } from "react-icons/tb";
+import { CiSquarePlus } from "react-icons/ci";
+import { BiMessageSquareDetail, BiCategory, BiExit  } from "react-icons/bi";
+
 function Menu() {
-  
-    const { logout} = useAuth();
-  
+    const { logout } = useAuth();
+    
     return(
         <nav>
             <menu>
                     
-                <li><NavLink to="/">Sito</NavLink></li>
+                <li><NavLink to="/"><TbWorld />Sito</NavLink></li>
             
-                <li><NavLink to="/dashboard">Home</NavLink></li>
+                <li className="my-2"><NavLink to="/dashboard"><MdDashboard />Home</NavLink></li>
                 
-                <li><NavLink to="photos/create">Crea</NavLink></li>
+                <li><NavLink to="photos/create"><CiSquarePlus />Crea</NavLink></li>
 
-                <li><NavLink to="categories">Categorie</NavLink></li>
+                <li className="my-2"><NavLink to="categories"><BiCategory />Categorie</NavLink></li>
 
-                <li><NavLink to="messages">Messaggi</NavLink></li>
+                <li><NavLink to="messages"><BiMessageSquareDetail />Messaggi</NavLink></li>
                 
-                <li><button onClick={logout}>Log out</button></li>
+                <li className="my-2"><button onClick={logout}><BiExit />Log out</button></li>
                 
             </menu>
         </nav>
